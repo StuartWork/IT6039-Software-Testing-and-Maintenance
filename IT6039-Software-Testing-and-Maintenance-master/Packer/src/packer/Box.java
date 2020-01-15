@@ -78,9 +78,6 @@ public class Box {
     }
     
     public boolean isHeavy(){
-        if (remainingCapacity() == 0){
-        return true;
-                }
-        else return false;
+        return contents.hasHeavyItems();
     }
 }
