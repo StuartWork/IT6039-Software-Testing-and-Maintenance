@@ -94,4 +94,12 @@ public class Manifest {
         return false;
     }
     
+    public boolean hasHazardousItems() {
+        for (Product p : quantities.keySet()) {
+            if (p.isHazardous()) {
+                return true;
+            }
+        }
+        return false;
+    }
 }
