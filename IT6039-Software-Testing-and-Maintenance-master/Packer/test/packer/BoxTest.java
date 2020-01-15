@@ -140,15 +140,15 @@ public class BoxTest {
         m.addProduct(new Product("Nails", 1, false, false), 12);
         List<Box> instance = Packer.packProducts(c, d, m);
         assertEquals(false, n.isHeavy());
-        for (Box b : instance) {
-            System.out.println(b);
+        for (Box n : instance) {
+            System.out.println(n);
         }
         
         m.addProduct(new Product("Light Bulbs", 1, false, true), 8);
         List<Box> instance1 = Packer.packProducts(c, d, m);
         assertEquals(true, n.isHeavy());
-        for (Box b : instance1) {
-            System.out.println(b);
+        for (Box n : instance1) {
+            System.out.println(n);
         }
     }
 }
