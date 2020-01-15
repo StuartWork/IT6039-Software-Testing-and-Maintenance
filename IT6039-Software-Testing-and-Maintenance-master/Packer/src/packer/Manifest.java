@@ -57,6 +57,16 @@ public class Manifest {
         return weight;
     }
     
+    public double getBoxTotalWeight() {
+        double weight = 0;
+        double total = 0;
+        for (Product p : quantities.keySet()) {
+            weight = quantities.get(p) * p.getWeight();
+            total = total + weight;
+        }
+        return total;
+    }
+    
     public Product getHeaviestUnder(double weight) {
         for (Product p : byWeight) {
             if (p.getWeight() <= weight) {
@@ -101,5 +111,12 @@ public class Manifest {
             }
         }
         return false;
+    }
+    
+    public boolean hasHeavyItems() {
+        if (getBoxTotalWeight() >= 20){
+        return true;
+                }
+        else return false;
     }
 }
