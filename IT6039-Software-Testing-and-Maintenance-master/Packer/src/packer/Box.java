@@ -41,6 +41,8 @@ public class Box {
         label.append("\n");
         if (this.isFragile()) {
             label.append("FRAGILE\n");
+        }if (this.isHazardous()) {
+            label.append("HAZARDOUS\n");
         }
         return label.toString();
     }
