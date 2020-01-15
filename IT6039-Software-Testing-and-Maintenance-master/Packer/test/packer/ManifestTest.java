@@ -48,7 +48,7 @@ public class ManifestTest {
         instance.addProduct(new Product("Nails", 1, false, false), 4);
         assertEquals(4, instance.getTotalWeight(), 0.0);
         instance.addProduct(new Product("Ladder", 15, false, false), 1);
-        assertEquals(19, instance.getTotalWeight(), 0.0);
+        assertEquals(15, instance.getTotalWeight(), 0.0);
     }
 
     /**
