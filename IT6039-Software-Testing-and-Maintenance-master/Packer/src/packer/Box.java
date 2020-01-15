@@ -43,6 +43,8 @@ public class Box {
             label.append("FRAGILE\n");
         }if (this.isHazardous()) {
             label.append("HAZARDOUS\n");
+        }if (this.isHeavy()) {
+            label.append("HEAVY\n");
         }
         return label.toString();
     }
@@ -56,15 +58,15 @@ public class Box {
     }
        
     public boolean canFit(Product p) {
-        return p.getWeight() < 40;
+        return p.getWeight() < 20;
     }
     
     public boolean canFit(Product p, int quantity) {
-        return (p.getWeight() * quantity) < 40;
+        return (p.getWeight() * quantity) < 20;
     }
     
     public double remainingCapacity() {
-        return 40 - this.getWeight();
+        return 20 - this.getWeight();
     }
     
     public boolean isFragile() {
@@ -73,5 +75,12 @@ public class Box {
     
     public boolean isHazardous() {
         return contents.hasHazardousItems();
+    }
+    
+    public boolean isHeavy(){
+        if (remainingCapacity() == 0){
+        return true;
+                }
+        else return false;
     }
 }

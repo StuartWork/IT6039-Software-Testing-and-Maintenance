@@ -46,17 +46,23 @@ public class BoxTest {
         System.out.println("getWeight");
         Address customerAddress1 = new Address("67 Torch Rd", "Tree line", "Mt High", "799", new Coordinates(1102, 87));
         Customer c = new Customer("Andy Bravo", customerAddress1);
+        
         Address depotAddress = new Address("23 Good Luck St", "Blue View", "Sandy Shores", "H337", new Coordinates(138, 995));
         Depot d = new Depot("Main Depot", depotAddress);
+        
         Manifest m = new Manifest();
-        m.addProduct(new Product("Nails", 1, false, false), 20);
-        double expResult = 20.0;
-        double result = m.getTotalWeight();
-         List<Box> instance = Packer.packProducts(c, d, m);
+        m.addProduct(new Product("Saw", 5, true, false), 1);
+        assertEquals(5, m.getTotalWeight(), 0.0);
+        Manifest n = new Manifest();
+        n.addProduct(new Product("Light Bulbs", 1, false, true), 20);
+        assertEquals(20, n.getTotalWeight(), 0.0);
+        Manifest l = new Manifest();
+        l.addProduct(new Product("Nails", 1, false, false), 21);
+        List<Box> instance = Packer.packProducts(c, d, m);
         for (Box b : instance) {
             System.out.println(b);
         }
-        assertEquals(expResult, result, 0.0);
+        assertEquals(21, l.getTotalWeight(), 0.0);
         
     }
 
@@ -93,6 +99,7 @@ public class BoxTest {
      */
     @Test
     public void testIsHazardous() {
+        System.out.println("isHazardous");
         Address customerAddress1 = new Address("67 Torch Rd", "Tree line", "Mt High", "799", new Coordinates(1102, 87));
         Customer c = new Customer("Andy Bravo", customerAddress1);
         
@@ -106,14 +113,23 @@ public class BoxTest {
         for (Box b : instance) {
             System.out.println(b);
         }
+        
+        m.addProduct(new Product("Weedkiller", 2, true, false), 1);
+        List<Box> instance1 = Packer.packProducts(c, d, m);
+        assertEquals(true, m.hasHazardousItems());
+        for (Box b : instance1) {
+            System.out.println(b);
+        }
     }
     
     /**
      * Test of isHeavy.
      */
+    private Box n;
     @Test
     public void testIsHeavy() {
-        System.out.println("isHazardous");
+        
+        System.out.println("isHeavy");
         Address customerAddress1 = new Address("67 Torch Rd", "Tree line", "Mt High", "799", new Coordinates(1102, 87));
         Customer c = new Customer("Andy Bravo", customerAddress1);
         
@@ -123,8 +139,15 @@ public class BoxTest {
         Manifest m = new Manifest();
         m.addProduct(new Product("Nails", 1, false, false), 12);
         List<Box> instance = Packer.packProducts(c, d, m);
-        assertEquals(false, m.isHeavy());
+        assertEquals(false, n.isHeavy());
         for (Box b : instance) {
+            System.out.println(b);
+        }
+        
+        m.addProduct(new Product("Light Bulbs", 1, false, true), 8);
+        List<Box> instance1 = Packer.packProducts(c, d, m);
+        assertEquals(true, n.isHeavy());
+        for (Box b : instance1) {
             System.out.println(b);
         }
     }
