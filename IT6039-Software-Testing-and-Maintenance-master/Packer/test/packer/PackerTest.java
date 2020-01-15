@@ -63,6 +63,8 @@ public class PackerTest {
         List<Box> result2 = Packer.packProducts(c, d, m1);
         assertEquals(true, result2.equals(result2));
         
+        assertEquals(false, result1.equals(result2));
+        
     }
     
 }
