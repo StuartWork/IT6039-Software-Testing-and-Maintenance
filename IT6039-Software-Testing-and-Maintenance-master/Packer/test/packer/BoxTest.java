@@ -142,8 +142,8 @@ public class BoxTest {
         for (Box n : instance) {
             System.out.println(n);
         }
-        
-        m.addProduct(new Product("Light Bulbs", 1, false, true), 20);
+        m.addProduct(new Product("Nails", 1, false, false), 12);
+        m.addProduct(new Product("Light Bulbs", 1, false, true), 8);
         List<Box> instance1 = Packer.packProducts(c, d, m);
         assertEquals(true, m.hasHeavyItems());
         for (Box n : instance1) {
