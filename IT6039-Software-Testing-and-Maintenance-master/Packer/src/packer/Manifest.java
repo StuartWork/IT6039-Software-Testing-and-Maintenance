@@ -114,7 +114,7 @@ public class Manifest {
     }
     
     public boolean hasHeavyItems() {
-        if (getBoxTotalWeight() >= 20){
+        if (getBoxTotalWeight() >= 15){
         return true;
                 }
         else return false;
